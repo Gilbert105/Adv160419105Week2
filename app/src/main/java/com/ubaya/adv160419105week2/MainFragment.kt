@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
@@ -25,8 +26,10 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         buttonStart.setOnClickListener{
-            val action = MainFragmentDirections.actionMainFragmentToGameFragment()
+            var playerName = inputName.editText?.text.toString()
+            val action = MainFragmentDirections.actionMainFragmentToGameFragment(playerName)
             Navigation.findNavController(it).navigate(action)
         }
     }
