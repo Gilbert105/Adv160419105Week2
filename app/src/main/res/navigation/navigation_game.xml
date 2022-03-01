@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_game"
     android:label="Game Screen"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/itemHome">
 
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/itemHome"
         android:name="com.ubaya.adv160419105week2.MainFragment"
         android:label="Main Screen"
         tools:layout="@layout/fragment_main" >
@@ -16,6 +16,9 @@
             app:destination="@id/gameFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_itemHome_to_optionsFragment"
+            app:destination="@id/optionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -24,9 +27,28 @@
         tools:layout="@layout/fragment_game" >
         <action
             android:id="@+id/action_gameFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/itemHome"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/itemHome"
+            app:popUpToInclusive="true" />
         <argument
             android:name="playerName"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/itemHistory"
+        android:name="com.ubaya.adv160419105week2.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/itemProfile"
+        android:name="com.ubaya.adv160419105week2.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <dialog
+        android:id="@+id/optionsFragment"
+        android:name="com.ubaya.adv160419105week2.OptionsFragment"
+        android:label="fragment_options"
+        tools:layout="@layout/fragment_options" />
 </navigation>
